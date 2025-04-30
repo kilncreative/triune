@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copper Flute Triune | RAUM Music</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Work+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #a6886d;
+            --light-color: #f7f5f2;
+            --dark-color: #0e0e0e;
+            --spacing: clamp(1rem, 5vw, 8rem);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #f7f5f2;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-weight: 400;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Italiana', serif;
+            font-weight: normal;
+            line-height: 1.2;
+            color: #222222;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1680px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Subtle Animation Keyframes */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Logo */
+        .logo {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 200;
+            font-family: 'Italiana', serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            mix-blend-mode: difference;
+            color: var(--light-color);
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                position: absolute;
+            }
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light-color);
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(14, 14, 14, 0.4);
+            z-index: 0;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            filter: none;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 var(--spacing);
+            max-width: 800px;
+            animation: fadeUp 1.2s ease-out;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 4px;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.8rem, 8vw, 5rem);
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-weight: 300;
+            letter-spacing: 1px;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.8;
+        }
+        
+        .scroll-indicator::after {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 40px;
+            background-color: var(--light-color);
+            margin-top: 0.5rem;
+            animation: fadeIn 1.5s infinite alternate;
+        }
+        
+        /* Introduction Section */
+        .introduction {
+            position: relative;
+            padding: calc(var(--spacing) * 2) var(--spacing);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--light-color);
+        }
+        
+        .intro-content {
+            width: 50%;
+            padding-right: var(--spacing);
+        }
+        
+        .intro-image {
+            width: 50%;
+            position: relative;
+        }
+        
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.5rem;
+            width: 60px;
+            height: 1px;
+            background-color: var(--secondary-color);
+        }
+        
+        .intro-text {
+            font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            line-height: 1.7;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: #f0eeea;
+            padding: var(--spacing);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            padding: var(--spacing) 0;
+        }
+        
+        .feature {
+            position: relative;
+            padding-left: 2rem;
+            background-color: rgba(255, 255, 255, 0.4);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+        
+        .feature-number {
+            position: absolute;
+            top: -0.5rem;
+            left: 0;
+            font-family: 'Italiana', serif;
+            font-size: 2.5rem;
+            opacity: 0.3;
+        }
+        
+        .feature-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-description {
+            font-weight: 400;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            padding: var(--spacing) 0;
+            position: relative;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 400px);
+            gap: 2px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            left: 2rem;
+            bottom: 2rem;
+            color: var(--light-color);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            text-transform: uppercase;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+        
+        /* Testimonial Section */
+        .testimonial {
+            padding: calc(var(--spacing) * 2) var(--spacing);
+            text-align: center;
+            background-color: #f0ebe5;
+        }
+        
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-text {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-family: 'Italiana', serif;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+        
+        .testimonial-author {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        /* Timeline Section */
+        .timeline {
+            padding: calc(var(--spacing) * 2) var(--spacing);
+            background-color: var(--light-color);
+        }
+        
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 32px;
+            top: 50px;
+            bottom: -50px;
+            width: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        
+        .timeline-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 2rem;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .timeline-content {
+            padding-top: 0.5rem;
+        }
+        
+        .timeline-date {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-text {
+            font-weight: 400;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Specs Section */
+        .specs {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: calc(var(--spacing) * 2) var(--spacing);
+            position: relative;
+        }
+        
+        .specs-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+        
+        .specs-content {
+            width: 40%;
+        }
+        
+        .specs-table {
+            width: 50%;
+        }
+        
+        .specs-row {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 0;
+        }
+        
+        .specs-row:last-child {
+            border-bottom: none;
+        }
+        
+        .specs-label {
+            width: 40%;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .specs-value {
+            width: 60%;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+        
+        /* Call to Action */
+        .cta {
+            padding: calc(var(--spacing) * 2) var(--spacing);
+            text-align: center;
+            background-color: var(--light-color);
+            position: relative;
+        }
+        
+        .cta-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 2rem;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+            font-family: 'Italiana', serif;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        
+        .button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: transform 0.5s ease;
+            transform: skewX(-25deg);
+        }
+        
+        .button:hover::after {
+            transform: translateX(200%) skewX(-25deg);
+        }
+        
+        .secondary-link {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--secondary-color);
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 2px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 4rem var(--spacing);
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Italiana', serif;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-link {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            opacity: 1;
+        }
+        
+        .copyright {
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+        
+        /* Mobile Optimizations */
+        @media (max-width: 992px) {
+            .introduction {
+                flex-direction: column;
+            }
+            
+            .intro-content, .intro-image {
+                width: 100%;
+                padding-right: 0;
+            }
+            
+            .intro-content {
+                margin-bottom: 3rem;
+            }
+            
+            .specs-container {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .specs-content, .specs-table {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 300px);
+            }
+            
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo {
+                top: 1.5rem;
+                left: 1.5rem;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            :root {
+                --spacing: 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .specs-row {
+                flex-direction: column;
+            }
+            
+            .specs-label, .specs-value {
+                width: 100%;
+            }
+            
+            .specs-label {
+                margin-bottom: 0.5rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo -->
+    <a href="https://www.raummusic.com" class="logo">RAUM</a>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <img src="/img/11.jpg" alt="Copper Flute Triune - Elegant copper and blue patina design" class="hero-image" style="width:100%; height:100%; object-fit:cover;">
+        <div class="hero-content">
+            <h1 class="hero-title">Copper Flute Triune</h1>
+            <p class="hero-subtitle">The evolution of sound: three harmonically resonant chambers in perfect unity</p>
+            <div style="display: inline-block; background-color: var(--secondary-color); color: var(--light-color); padding: 0.5rem 1.5rem; margin-top: 1.5rem; letter-spacing: 1px; font-size: 0.9rem; font-weight: 300;">LIMITED PRE-SALE OFFERING</div>
+        </div>
+        <div class="scroll-indicator">Discover</div>
+    </section>
+    
+    <!-- Introduction Section -->
+    <section class="introduction">
+        <div class="intro-content">
+            <h2 class="section-title">Beyond the Traditional Drone</h2>
+            <p class="intro-text">For years, musicians have requested a "drone version" of the Copper Flute—but simply placing two flute bodies side by side was never going to be enough. The Copper Flute Triune represents a complete reimagining of what a drone instrument can be.</p>
+            
+            <!-- Responsive Video Container -->
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 2rem 0;">
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://iframe.mediadelivery.net/embed/[YOUR_LIBRARY_ID]/[YOUR_VIDEO_ID]?autoplay=false" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+            </div>
+            
+            <p class="intro-text">This isn't just another product; it's a unique artistic statement. With three perfectly calibrated resonance chambers working in harmonic unity, the Triune creates a rich tapestry of overtones that transforms solo playing into a full, immersive sonic experience.</p>
+            <p class="intro-text">Each note you play is supported by three meticulously tuned drone chambers, creating complex harmonic interactions that were previously impossible with traditional drone instruments. The result is an instrument that speaks with multiple voices while remaining intuitive to play.</p>
+        </div>
+        <div class="intro-image">
+            <img src="/img/12.jpg" alt="Copper Flute Triune Detail - Three openings design" style="width:100%; height:auto; object-fit:cover;">
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Who is the Triune For?</h2>
+            <div class="features-container">
+                <div class="feature">
+                    <div class="feature-number">01</div>
+                    <h3 class="feature-title">Flute Players & Musicians</h3>
+                    <p class="feature-description">For experienced flutists and wind players seeking to expand their sonic palette. The Triune offers a natural extension to your musical vocabulary, allowing you to create rich, multi-layered compositions without additional instruments or effects. Its innovative design respects traditional techniques while opening new expressive possibilities.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-number">02</div>
+                    <h3 class="feature-title">Sound Healers & Therapists</h3>
+                    <p class="feature-description">The Triune's three harmonic chambers create resonant frequencies that are particularly effective for sound healing practices. The rich, sustained drone tones produce a more immersive sonic environment than single-chamber instruments, allowing practitioners to create deeper meditative states and more profound harmonic experiences for clients.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-number">03</div>
+                    <h3 class="feature-title">Yoga & Meditation Instructors</h3>
+                    <p class="feature-description">Transform your sessions with an instrument that can sustain beautiful, evolving tones throughout an entire class. The Triune's ability to create continuous harmonic fields makes it perfect for guiding breathwork, enhancing transitions between poses, or establishing a sacred atmosphere for meditation practices.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-number">04</div>
+                    <h3 class="feature-title">First-Time Musicians</h3>
+                    <p class="feature-description">Despite its sophisticated design, the Triune remains approachable for beginners. Even simple notes are transformed by the harmonic drone chambers, creating beautiful, satisfying sounds from day one. The intuitive playing approach means you can begin creating emotionally rich music without years of technical training or music theory.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Second Video Section -->
+    <section style="background-color: #f0ebe5; padding: calc(var(--spacing) * 1.5) var(--spacing);">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Experience the Triune</h2>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem;">
+                <img src="/img/3.jpg" alt="Copper Flute Triune - Detail view" style="max-width: 100%; width: 300px; height: 300px; object-fit: cover;">
+                <img src="/img/5.jpg" alt="Copper Flute Triune - Full view" style="max-width: 100%; width: 300px; height: 300px; object-fit: cover;">
+                <img src="/img/6.jpg" alt="Copper Flute Triune - Side detail" style="max-width: 100%; width: 300px; height: 300px; object-fit: cover;">
+            </div>
+            <!-- Responsive Video Container -->
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 900px; margin: 0 auto;">
+                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://iframe.mediadelivery.net/embed/[YOUR_LIBRARY_ID]/[YOUR_VIDEO_ID]?autoplay=false" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="/img/1.jpg" alt="Copper Flute Triune - Precision Copper Engineering" style="width:100%; height:100%; object-fit:cover;">
+                <div class="gallery-caption">Precision Copper Engineering</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/img/4.jpg" alt="Copper Flute Triune - Triple Chamber Design" style="width:100%; height:100%; object-fit:cover;">
+                <div class="gallery-caption">Triple Chamber Design</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/img/7.jpg" alt="Copper Flute Triune - Triple Drone Architecture" style="width:100%; height:100%; object-fit:cover;">
+                <div class="gallery-caption">Triple Drone Architecture</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/img/10.jpg" alt="Copper Flute Triune - Performer's View" style="width:100%; height:100%; object-fit:cover;">
+                <div class="gallery-caption">Performer's View</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonial Section -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <p class="testimonial-text">"The moment I played the Triune, I understood this wasn't simply a flute with added drones—it's an entirely new voice. The way the three chambers interact creates this living, breathing harmonic field that transforms even simple melodies into something profound."</p>
+            <p class="testimonial-author">Eliza Chen, Composer</p>
+        </div>
+    </section>
+    
+    <!-- Specs Section -->
+    <section class="specs">
+        <div class="container">
+            <div class="specs-container">
+                <div class="specs-content">
+                    <h2 class="section-title">Sonic Character & Design</h2>
+                    <p class="intro-text">The Copper Flute Triune represents the culmination of years exploring the interplay between melody and resonance. Its carefully calibrated chambers create a symphony of harmonics that enrich every note you play, transforming even the simplest melodies into immersive sonic experiences.</p>
+                </div>
+                <div class="specs-table">
+                    <div class="specs-row">
+                        <div class="specs-label">Material</div>
+                        <div class="specs-value">Premium copper with specialized acoustic properties</div>
+                    </div>
+                    <div class="specs-row">
+                        <div class="specs-label">Voice Configuration</div>
+                        <div class="specs-value">Two F drone chambers with F minor and G minor melody body</div>
+                    </div>
+                    <div class="specs-row">
+                        <div class="specs-label">Harmonic Structure</div>
+                        <div class="specs-value">Three integrated resonance chambers with unified airflow</div>
+                    </div>
+                    <div class="specs-row">
+                        <div class="specs-label">Tonal Palette</div>
+                        <div class="specs-value">Primary drones in F with melodic range of 1.2 octaves</div>
+                    </div>
+                    <div class="specs-row">
+                        <div class="specs-label">Playing Dynamics</div>
+                        <div class="specs-value">Responsive to both gentle and assertive breath techniques</div>
+                    </div>
+                    <div class="specs-row">
+                        <div class="specs-label">Finish</div>
+                        <div class="specs-value">Hand-polished natural copper with optional patina options</div>
+                    </div>
+                    <div class="specs-row">
+                        <div class="specs-label">Includes</div>
+                        <div class="specs-value">Custom protective case, playing guide, maintenance kit</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <div class="container">
+            <h2 class="section-title">Pre-Sale Journey</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-icon">1</div>
+                    <div class="timeline-content">
+                        <p class="timeline-date">Now</p>
+                        <h3 class="timeline-title">Reserve Your Triune</h3>
+                        <p class="timeline-text">Be among the first to experience this revolutionary instrument. A $150 deposit reserves your Copper Flute Triune and locks in the special pre-launch price of $445—a $150 discount off the regular price.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">2</div>
+                    <div class="timeline-content">
+                        <p class="timeline-date">Within 2 Weeks</p>
+                        <h3 class="timeline-title">Drone Configuration Consultation</h3>
+                        <p class="timeline-text">We'll reach out to discuss your tonal preferences and playing style to optimize the drone chamber tuning for your specific musical expression. This personalized approach ensures your Triune becomes an extension of your artistic voice.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">3</div>
+                    <div class="timeline-content">
+                        <p class="timeline-date">4-6 Weeks</p>
+                        <h3 class="timeline-title">Crafting Process</h3>
+                        <p class="timeline-text">Your instrument is meticulously handcrafted with special attention to the harmonic relationship between the three chambers. As a pre-sale customer, you'll receive exclusive updates and photos documenting the creation of your Triune.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">4</div>
+                    <div class="timeline-content">
+                        <p class="timeline-date">7-8 Weeks</p>
+                        <h3 class="timeline-title">Delivery & Introduction</h3>
+                        <p class="timeline-text">Your Copper Flute Triune arrives with documentation of its unique harmonic properties, a comprehensive playing guide, and access to special technique videos that showcase the distinctive drone capabilities of this groundbreaking instrument.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2 class="cta-title">The Copper Flute Triune</h2>
+            <p class="intro-text" style="margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">After years of experimentation and development, we're offering an exclusive pre-sale opportunity for this groundbreaking instrument. The first 10 musicians will receive a significant discount on this exceptional creation.</p>
+            <div style="display: inline-block; background-color: var(--secondary-color); color: var(--light-color); padding: 0.5rem 1.5rem; margin-bottom: 2rem; letter-spacing: 1px; font-size: 0.9rem;">FIRST 10 ORDERS ONLY</div>
+            <p class="price"><span style="text-decoration: line-through; opacity: 0.5; font-size: 1.8rem; margin-right: 1rem;">$595</span> $445</p>
+            <p style="font-size: 0.9rem; margin-bottom: 2rem; opacity: 0.7;">$150 pre-sale discount applied</p>
+            <a href="https://www.raummusic.com/cart" class="button">Reserve Now</a><br>
+            <a href="https://www.raummusic.com/products" class="secondary-link">View All Instruments</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">RAUM</div>
+        <div class="footer-links">
+            <a href="https://www.raummusic.com/about" class="footer-link">About</a>
+            <a href="https://www.raummusic.com/contact" class="footer-link">Contact</a>
+            <a href="https://www.raummusic.com/shipping" class="footer-link">Shipping</a>
+            <a href="https://www.raummusic.com/care" class="footer-link">Instrument Care</a>
+        </div>
+        <p class="copyright">&copy; 2025 RAUM Music. All rights reserved.</p>
+    </footer>
+</body>
+</html>
