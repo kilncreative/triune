@@ -38,7 +38,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-weight: 400;
-            position: relative; /* Needed for absolute positioning context of logo */
+            position: relative;
         }
 
         h1, h2, h3, h4 {
@@ -86,7 +86,6 @@
 
         /* Logo */
         .logo {
-            /* MODIFIED: Changed from fixed to absolute */
             position: absolute;
             top: 2rem;
             left: 2rem;
@@ -99,14 +98,12 @@
             color: var(--light-color);
         }
         .logo img {
-             /* MODIFIED: Halved the height */
              height: 20px;
              width: auto;
         }
 
         @media (max-width: 768px) {
             .logo {
-                /* MODIFIED: Removed redundant position: absolute; */
                 top: 1.5rem;
                 left: 1.5rem;
                 font-size: 1rem;
@@ -126,8 +123,6 @@
             align-items: center;
             justify-content: center;
             color: var(--light-color);
-            /* Add padding top if logo overlaps content now */
-            /* padding-top: 5rem; */ /* Adjust as needed */
         }
 
         .hero-bg {
@@ -183,9 +178,6 @@
             color: #ffffff;
         }
 
-        /* Style for the badge that was here - now applied via button--hero-badge */
-        /* .pre-sale-badge { ... } */
-
         .scroll-indicator {
             position: absolute;
             bottom: 2rem;
@@ -216,24 +208,31 @@
             padding: calc(var(--spacing) * 2) var(--spacing);
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            /* Default align-items is stretch, use center or flex-start if needed */
+            align-items: center; /* Vertically center content if heights differ */
+            /* align-items: flex-start; */ /* Align tops if image is very tall */
             background-color: var(--light-color);
+            gap: var(--spacing); /* Add gap between text and image */
         }
 
         .intro-content {
             width: 50%;
-            padding-right: var(--spacing);
+             padding-right: 0; /* Remove padding, use gap instead */
+             /* flex-basis: 50%; */ /* Alternative to width */
         }
 
         .intro-image {
             width: 50%;
+             /* flex-basis: 50%; */ /* Alternative to width */
             position: relative;
         }
 
+        /* MODIFIED: intro-image img rule */
         .intro-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100%; /* Keep width constrained to container */
+            max-width: 100%;
+            height: auto; /* Allow height to adjust based on aspect ratio */
+            display: block;
         }
 
         .section-title {
@@ -256,7 +255,7 @@
             font-size: clamp(1.1rem, 1.5vw, 1.2rem);
             font-weight: 400;
             margin-bottom: 2rem;
-            max-width: 800px;
+            max-width: 800px; /* May not be needed if width is 50% */
             line-height: 1.7;
         }
 
@@ -697,10 +696,14 @@
         }
 
         .footer-logo {
-            font-family: 'Italiana', serif;
-            font-size: 1.5rem;
-            letter-spacing: 3px;
             margin-bottom: 2rem;
+        }
+
+        .footer-logo img {
+            height: 20px;
+            width: auto;
+            display: inline-block;
+            vertical-align: middle;
         }
 
         .footer-nav {
@@ -737,7 +740,7 @@
             opacity: 0.5;
         }
 
-        .img-cover {
+        .img-cover { /* This class is used elsewhere (Gallery) */
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -748,16 +751,21 @@
         @media (max-width: 992px) {
             .introduction {
                 flex-direction: column;
+                /* Reset alignment for stacked layout */
+                align-items: stretch;
             }
 
             .intro-content, .intro-image {
-                width: 100%;
-                padding-right: 0;
+                width: 100%; /* Full width when stacked */
+                /* flex-basis: auto; */ /* Reset flex-basis */
             }
 
             .intro-content {
                 margin-bottom: 3rem;
             }
+             .intro-image img { /* Ensure image doesn't overflow container */
+                 max-width: 100%;
+             }
 
             .specs-container {
                 flex-direction: column;
@@ -874,8 +882,9 @@
             <p class="intro-text">This isn't just another product; it's a unique artistic statement. With three perfectly calibrated resonance chambers working in harmonic unity, the Triune creates a rich tapestry of overtones that transforms solo playing into a full, immersive sonic experience.</p>
             <p class="intro-text">Each note you play is supported by three meticulously tuned drone chambers, creating complex harmonic interactions that were previously impossible with traditional drone instruments. The result is an instrument that speaks with multiple voices while remaining intuitive to play.</p>
         </div>
+        <!-- MODIFIED: Image source and alt text updated -->
         <div class="intro-image">
-            <img src="/img/12.jpg" alt="Copper Flute Triune Detail - Three openings design" class="img-cover" loading="lazy">
+            <img src="/img/TallShot.jpg" alt="Full length view of the Copper Flute Triune highlighting its vertical form" loading="lazy">
         </div>
     </section>
 
@@ -1055,7 +1064,9 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">RAUM</div>
+        <div class="footer-logo">
+            <img src="/img/white-logo.png" alt="RAUM Music">
+        </div>
         <nav class="footer-nav" aria-label="Footer Navigation">
             <ul class="footer-links">
                 <li class="footer-link"><a href="https://www.raummusic.com/about">About</a></li>
