@@ -108,8 +108,6 @@
                 left: 1.5rem;
                 font-size: 1rem;
             }
-            /* Optional: Adjust image size further for mobile */
-            /* .logo img { height: 18px; } */
         }
 
 
@@ -208,30 +206,25 @@
             padding: calc(var(--spacing) * 2) var(--spacing);
             display: flex;
             justify-content: space-between;
-            /* Default align-items is stretch, use center or flex-start if needed */
-            align-items: center; /* Vertically center content if heights differ */
-            /* align-items: flex-start; */ /* Align tops if image is very tall */
+            align-items: center;
             background-color: var(--light-color);
-            gap: var(--spacing); /* Add gap between text and image */
+            gap: var(--spacing);
         }
 
         .intro-content {
             width: 50%;
-             padding-right: 0; /* Remove padding, use gap instead */
-             /* flex-basis: 50%; */ /* Alternative to width */
+             padding-right: 0;
         }
 
         .intro-image {
             width: 50%;
-             /* flex-basis: 50%; */ /* Alternative to width */
             position: relative;
         }
 
-        /* MODIFIED: intro-image img rule */
         .intro-image img {
-            width: 100%; /* Keep width constrained to container */
+            width: 100%;
             max-width: 100%;
-            height: auto; /* Allow height to adjust based on aspect ratio */
+            height: auto;
             display: block;
         }
 
@@ -255,9 +248,14 @@
             font-size: clamp(1.1rem, 1.5vw, 1.2rem);
             font-weight: 400;
             margin-bottom: 2rem;
-            max-width: 800px; /* May not be needed if width is 50% */
+            max-width: 800px;
             line-height: 1.7;
         }
+        /* Separate rule for last paragraph in intro if needed */
+        .intro-content .intro-text:last-child {
+             margin-bottom: 0; /* Avoid double margin if video follows */
+        }
+
 
         /* Responsive Video Wrapper */
         .video-responsive {
@@ -396,30 +394,8 @@
         }
 
 
-        /* Testimonial Section */
-        .testimonial {
-            padding: calc(var(--spacing) * 2) var(--spacing);
-            text-align: center;
-            background-color: #f0ebe5;
-        }
+        /* Testimonial Section - REMOVED */
 
-        .testimonial-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .testimonial-text {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-family: 'Italiana', serif;
-            line-height: 1.5;
-            margin-bottom: 2rem;
-        }
-
-        .testimonial-author {
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
 
         /* Specs Section */
         .specs {
@@ -504,20 +480,22 @@
             margin-bottom: 0;
         }
 
-        .timeline-item::before {
+        /* MODIFIED: Adjusted timeline line height for 3 items */
+        .timeline-item:not(:last-child)::before {
             content: "";
             position: absolute;
             left: 32px;
-            top: 50px;
-            bottom: -50px;
+            top: 50px; /* Start below center of icon */
+            bottom: -3rem; /* Extend down to next item's top roughly */
             width: 1px;
             background-color: rgba(0, 0, 0, 0.1);
             z-index: 0;
         }
-
+        /* Ensure line doesn't appear for last item (redundant but safe) */
         .timeline-item:last-child::before {
             display: none;
         }
+
 
         .timeline-icon {
             width: 64px;
@@ -673,7 +651,7 @@
          }
 
 
-        .secondary-link {
+        .secondary-link { /* This class is no longer used in HTML but kept for potential future use */
             font-size: 0.9rem;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -740,7 +718,7 @@
             opacity: 0.5;
         }
 
-        .img-cover { /* This class is used elsewhere (Gallery) */
+        .img-cover {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -751,19 +729,17 @@
         @media (max-width: 992px) {
             .introduction {
                 flex-direction: column;
-                /* Reset alignment for stacked layout */
                 align-items: stretch;
             }
 
             .intro-content, .intro-image {
-                width: 100%; /* Full width when stacked */
-                /* flex-basis: auto; */ /* Reset flex-basis */
+                width: 100%;
             }
 
             .intro-content {
                 margin-bottom: 3rem;
             }
-             .intro-image img { /* Ensure image doesn't overflow container */
+             .intro-image img {
                  max-width: 100%;
              }
 
@@ -863,7 +839,8 @@
         <img src="/img/11.jpg" alt="Copper Flute Triune - Elegant copper and blue patina design" class="hero-image" loading="eager">
         <div class="hero-content">
             <h1 class="hero-title">Copper Flute Triune</h1>
-            <p class="hero-subtitle">The evolution of sound: three harmonically resonant chambers in perfect unity</p>
+            <!-- UPDATED: Hero Subtitle -->
+            <p class="hero-subtitle">An evolution in harmony</p>
             <a href="#cta-section" class="button button--hero-badge">LIMITED PRE-SALE OFFERING</a>
         </div>
         <div class="scroll-indicator">Discover</div>
@@ -873,16 +850,19 @@
     <section class="introduction">
         <div class="intro-content">
             <h2 class="section-title">Beyond the Traditional Drone</h2>
-            <p class="intro-text">For years, musicians have requested a "drone version" of the Copper Flute—but simply placing two flute bodies side by side was never going to be enough. The Copper Flute Triune represents a complete reimagining of what a drone instrument can be.</p>
+            <!-- UPDATED: Intro Text paragraphs -->
+            <p class="intro-text">Since releasing the first Copper Flute, the number one request I’ve received is for a “drone” version. Creating unique drones is what first pulled me into this craft, so if I was going to do a drone, I wanted it to be more than just placing two bodies together.</p>
+            <p class="intro-text">I wanted to rethink the existing standards around creating a “drone flute”. My goal was to capture an intentional aesthetic while integrating the beauty of the Copper Flute.</p>
+            <p class="intro-text">After many tests, prototypes, long nights and early mornings… I am proud to bring you the end result of this vision.</p>
+            <p class="intro-text">The Copper Flute Triune was created as a work of functional art, combining beautiful design with a harmonious voice. The end result is an instrument like no other.</p>
+            <p class="intro-text">Today, I am inviting you to be one of the first people in the world to hold a Copper Flute Triune of your own!</p>
 
-            <div class="video-responsive">
+            <!-- Video remains -->
+             <div class="video-responsive">
                 <iframe title="Copper Flute Triune Introduction Video" src="https://iframe.mediadelivery.net/embed/[YOUR_LIBRARY_ID]/[YOUR_VIDEO_ID_1]?autoplay=false" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
             </div>
-
-            <p class="intro-text">This isn't just another product; it's a unique artistic statement. With three perfectly calibrated resonance chambers working in harmonic unity, the Triune creates a rich tapestry of overtones that transforms solo playing into a full, immersive sonic experience.</p>
-            <p class="intro-text">Each note you play is supported by three meticulously tuned drone chambers, creating complex harmonic interactions that were previously impossible with traditional drone instruments. The result is an instrument that speaks with multiple voices while remaining intuitive to play.</p>
+            <!-- Removed original paragraphs -->
         </div>
-        <!-- MODIFIED: Image source and alt text updated -->
         <div class="intro-image">
             <img src="/img/TallShot.jpg" alt="Full length view of the Copper Flute Triune highlighting its vertical form" loading="lazy">
         </div>
@@ -893,7 +873,8 @@
         <div class="gallery-grid">
             <div class="gallery-item">
                 <img src="/img/1.jpg" alt="Copper Flute Triune - Precision Copper Engineering" class="img-cover" loading="lazy">
-                <div class="gallery-caption">Precision Copper Engineering</div>
+                <!-- UPDATED: Caption -->
+                <div class="gallery-caption">Precision Engineering</div>
             </div>
             <div class="gallery-item">
                 <img src="/img/4.jpg" alt="Copper Flute Triune - Triple Chamber Design" class="img-cover" loading="lazy">
@@ -901,11 +882,13 @@
             </div>
             <div class="gallery-item">
                 <img src="/img/7.jpg" alt="Copper Flute Triune - Triple Drone Architecture" class="img-cover" loading="lazy">
-                <div class="gallery-caption">Triple Drone Architecture</div>
+                 <!-- UPDATED: Caption -->
+                <div class="gallery-caption">Tiered Chamber Mouthpiece</div>
             </div>
             <div class="gallery-item">
                 <img src="/img/10.jpg" alt="Copper Flute Triune - Performer's View" class="img-cover" loading="lazy">
-                <div class="gallery-caption">Performer's View</div>
+                 <!-- UPDATED: Caption -->
+                <div class="gallery-caption">TruResonant® Acoustic Technology Headjoint</div>
             </div>
         </div>
     </section>
@@ -918,17 +901,20 @@
                 <div class="feature">
                     <div class="feature-number">01</div>
                     <h3 class="feature-title">Flute Players & Musicians</h3>
-                    <p class="feature-description">For experienced flutists and wind players seeking to expand their sonic palette. The Triune offers a natural extension to your musical vocabulary, allowing you to create rich, multi-layered compositions without additional instruments or effects. Its innovative design respects traditional techniques while opening new expressive possibilities.</p>
+                    <!-- UPDATED: Feature Description (replaced entirely) -->
+                    <p class="feature-description">For flutists and musicians seeking to expand their sonic palette.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-number">02</div>
                     <h3 class="feature-title">Sound Healers & Therapists</h3>
-                    <p class="feature-description">The Triune's three harmonic chambers create resonant frequencies that are particularly effective for sound healing practices. The rich, sustained drone tones produce a more immersive sonic environment than single-chamber instruments, allowing practitioners to create deeper meditative states and more profound harmonic experiences for clients.</p>
+                     <!-- UPDATED: Feature Description (modified phrase) -->
+                    <p class="feature-description">The Triune's three harmonic chambers create resonant frequencies that are particularly well-received in sound healing environments. The rich, sustained drone tones produce a more immersive sonic environment than single-chamber instruments, allowing practitioners to create deeper meditative states and more profound harmonic experiences for clients.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-number">03</div>
                     <h3 class="feature-title">Yoga & Meditation Instructors</h3>
-                    <p class="feature-description">Transform your sessions with an instrument that can sustain beautiful, evolving tones throughout an entire class. The Triune's ability to create continuous harmonic fields makes it perfect for guiding breathwork, enhancing transitions between poses, or establishing a sacred atmosphere for meditation practices.</p>
+                     <!-- UPDATED: Feature Description (modified first sentence) -->
+                    <p class="feature-description">Transform your sessions with beautiful, evolving tones. The Triune's ability to create continuous harmonic fields makes it perfect for guiding breathwork, enhancing transitions between poses, or establishing a sacred atmosphere for meditation practices.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-number">04</div>
@@ -954,13 +940,7 @@
         </div>
     </section>
 
-    <!-- Testimonial Section -->
-    <section class="testimonial">
-        <div class="testimonial-content">
-            <p class="testimonial-text">"The moment I played the Triune, I understood this wasn't simply a flute with added drones—it's an entirely new voice. The way the three chambers interact creates this living, breathing harmonic field that transforms even simple melodies into something profound."</p>
-            <p class="testimonial-author">Eliza Chen, Composer</p>
-        </div>
-    </section>
+    <!-- Testimonial Section - REMOVED -->
 
     <!-- Specs Section -->
     <section class="specs">
@@ -1004,43 +984,39 @@
         </div>
     </section>
 
-    <!-- Timeline Section -->
+    <!-- Timeline Section - UPDATED -->
     <section class="timeline">
         <div class="container">
             <h2 class="section-title">Pre-Sale Journey</h2>
             <div class="timeline-container">
+                 <!-- Step 1 -->
                  <div class="timeline-item">
                     <div class="timeline-icon">1</div>
                     <div class="timeline-content">
                         <p class="timeline-date">Now</p>
-                        <h3 class="timeline-title">Reserve Your Triune</h3>
-                        <p class="timeline-text">Be among the first to experience this revolutionary instrument. A $150 deposit reserves your Copper Flute Triune and locks in the special pre-launch price of $445—a $150 discount off the regular price.</p>
+                        <h3 class="timeline-title">Order Your Triune</h3>
+                        <p class="timeline-text">Be among the first to experience this new instrument. As my way of saying thank-you for joining me on this adventure, I am giving a $200 discount to the first 5 people who pre-order their Triune.</p>
                     </div>
                 </div>
+                 <!-- Step 2 -->
                 <div class="timeline-item">
                     <div class="timeline-icon">2</div>
                     <div class="timeline-content">
-                        <p class="timeline-date">Within 2 Weeks</p>
-                        <h3 class="timeline-title">Drone Configuration Consultation</h3>
-                        <p class="timeline-text">We'll reach out to discuss your tonal preferences and playing style to optimize the drone chamber tuning for your specific musical expression. This personalized approach ensures your Triune becomes an extension of your artistic voice.</p>
+                        <p class="timeline-date">1-2 Weeks</p>
+                        <h3 class="timeline-title">Crafting Process</h3>
+                        <p class="timeline-text">I have already laid the groundwork to create your Triune on a very fast timeline. Over the next two weeks, I will personally craft your flute with an extreme attention and care to detail and quality.</p>
                     </div>
                 </div>
+                 <!-- Step 3 -->
                 <div class="timeline-item">
                     <div class="timeline-icon">3</div>
                     <div class="timeline-content">
-                        <p class="timeline-date">4-6 Weeks</p>
-                        <h3 class="timeline-title">Crafting Process</h3>
-                        <p class="timeline-text">Your instrument is meticulously handcrafted with special attention to the harmonic relationship between the three chambers. As a pre-sale customer, you'll receive exclusive updates and photos documenting the creation of your Triune.</p>
+                        <p class="timeline-date">Week 3</p>
+                        <h3 class="timeline-title">Delivery</h3>
+                        <p class="timeline-text">Your Copper Flute Triune arrives with a special certificate of authenticity, a quick-start playing guide, and access to special videos that showcase the distinctive drone capabilities of this groundbreaking instrument.</p>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">4</div>
-                    <div class="timeline-content">
-                        <p class="timeline-date">7-8 Weeks</p>
-                        <h3 class="timeline-title">Delivery & Introduction</h3>
-                        <p class="timeline-text">Your Copper Flute Triune arrives with documentation of its unique harmonic properties, a comprehensive playing guide, and access to special technique videos that showcase the distinctive drone capabilities of this groundbreaking instrument.</p>
-                    </div>
-                </div>
+                 <!-- Original Step 4 Removed -->
             </div>
         </div>
     </section>
@@ -1053,12 +1029,16 @@
                   alt="Highlight image of the Copper Flute Triune"
                   class="cta-image"
                   loading="lazy">
-            <p class="intro-text" style="margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">After years of experimentation and development, we're offering an exclusive pre-sale opportunity for this groundbreaking instrument. The first 10 musicians will receive a significant discount on this exceptional creation.</p>
-            <div class="cta-badge">FIRST 10 ORDERS ONLY</div>
-            <p class="price"><span class="price-strikethrough">$595</span> $445</p>
-            <p class="price-note">$150 pre-sale discount applied</p>
-            <a href="https://www.raummusic.com/cart" class="button">Reserve Now</a><br>
-            <a href="https://www.raummusic.com/products" class="secondary-link">View All Instruments</a>
+            <!-- UPDATED: CTA Text -->
+            <p class="intro-text" style="margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">After years of experimentation and development, I am offering an exclusive pre-sale opportunity for this special new instrument. The first 5 musicians will receive a significant $200 discount over the launch price. Claim your spot before they fill up.</p>
+            <!-- UPDATED: CTA Badge -->
+            <div class="cta-badge">FIRST 5 ORDERS ONLY</div>
+            <!-- UPDATED: Price -->
+            <p class="price"><span class="price-strikethrough">$650</span> $450</p>
+             <!-- UPDATED: Price Note -->
+            <p class="price-note">$200 pre-sale discount applied</p>
+            <a href="https://www.raummusic.com/cart" class="button">Reserve Now</a>
+            <!-- REMOVED: Secondary Link and <br> -->
         </div>
     </section>
 
@@ -1068,11 +1048,10 @@
             <img src="/img/white-logo.png" alt="RAUM Music">
         </div>
         <nav class="footer-nav" aria-label="Footer Navigation">
+             <!-- UPDATED: Footer Links -->
             <ul class="footer-links">
-                <li class="footer-link"><a href="https://www.raummusic.com/about">About</a></li>
-                <li class="footer-link"><a href="https://www.raummusic.com/contact">Contact</a></li>
-                <li class="footer-link"><a href="https://www.raummusic.com/shipping">Shipping</a></li>
-                <li class="footer-link"><a href="https://www.raummusic.com/care">Instrument Care</a></li>
+                <li class="footer-link"><a href="https://www.raummusic.com/pages/about">About</a></li>
+                <!-- Removed other links -->
             </ul>
         </nav>
         <p class="copyright">© 2024 RAUM Music. All rights reserved.</p>
