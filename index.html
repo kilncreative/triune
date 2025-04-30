@@ -14,7 +14,6 @@
             --secondary-color: #a6886d; /* Brownish */
             --light-color: #f7f5f2;
             --dark-color: #0e0e0e;
-            /* ADDED: Accent color for button */
             --accent-color: #a13d3d; /* Dark Red */
             --spacing: clamp(1rem, 5vw, 8rem);
         }
@@ -39,6 +38,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-weight: 400;
+            position: relative; /* Needed for absolute positioning context of logo */
         }
 
         h1, h2, h3, h4 {
@@ -86,7 +86,8 @@
 
         /* Logo */
         .logo {
-            position: fixed;
+            /* MODIFIED: Changed from fixed to absolute */
+            position: absolute;
             top: 2rem;
             left: 2rem;
             z-index: 200;
@@ -98,15 +99,22 @@
             color: var(--light-color);
         }
         .logo img {
-             height: 40px;
+             /* MODIFIED: Halved the height */
+             height: 20px;
              width: auto;
         }
 
         @media (max-width: 768px) {
             .logo {
-                position: absolute;
+                /* MODIFIED: Removed redundant position: absolute; */
+                top: 1.5rem;
+                left: 1.5rem;
+                font-size: 1rem;
             }
+            /* Optional: Adjust image size further for mobile */
+            /* .logo img { height: 18px; } */
         }
+
 
         /* Hero Section */
         .hero {
@@ -118,6 +126,8 @@
             align-items: center;
             justify-content: center;
             color: var(--light-color);
+            /* Add padding top if logo overlaps content now */
+            /* padding-top: 5rem; */ /* Adjust as needed */
         }
 
         .hero-bg {
@@ -269,11 +279,10 @@
             border: 0;
         }
 
-        /* Gallery Section - MOVED HERE */
+        /* Gallery Section */
         .gallery {
             padding: var(--spacing) 0;
             position: relative;
-            /* Removed margin-top: 2rem; as it's now placed differently */
         }
 
         .gallery-grid {
@@ -369,7 +378,7 @@
 
 
         /* Second Video Section */
-        .second-video-section { /* Added class for clarity */
+        .second-video-section {
             background-color: #f0ebe5;
             padding: calc(var(--spacing) * 1.5) var(--spacing);
         }
@@ -392,7 +401,7 @@
         .testimonial {
             padding: calc(var(--spacing) * 2) var(--spacing);
             text-align: center;
-            background-color: #f0ebe5; /* Re-evaluate background if adjacent to same color */
+            background-color: #f0ebe5;
         }
 
         .testimonial-content {
@@ -431,12 +440,12 @@
         .specs-content {
             width: 40%;
         }
-        /* MODIFIED: Explicit white color for h2, removed opacity override */
+
         .specs-content h2 {
-             color: #FFFFFF; /* Pure white as requested */
-             opacity: 1; /* Ensure full opacity */
+             color: #FFFFFF;
+             opacity: 1;
         }
-         .specs-content p { /* Keep paragraph style */
+         .specs-content p {
              color: var(--light-color);
              opacity: 0.9;
          }
@@ -563,19 +572,18 @@
             margin: 0 auto;
         }
 
-        /* ADDED: Style for placeholder image in CTA */
         .cta-image {
             margin-bottom: 2rem;
-            display: block; /* Needed for auto margins */
+            display: block;
             margin-left: auto;
             margin-right: auto;
-            max-width: 100%; /* Prevent overflow */
-            border-radius: 4px; /* Optional: match button radius */
+            max-width: 100%;
+            border-radius: 4px;
         }
 
         .cta-title {
             font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 1rem; /* Adjusted margin */
+            margin-bottom: 1rem;
         }
 
         .price {
@@ -604,15 +612,15 @@
             margin-bottom: 2rem;
             letter-spacing: 1px;
             font-size: 0.9rem;
-            border-radius: 4px; /* Match button radius */
+            border-radius: 4px;
         }
 
 
-        /* Button Base Style - MODIFIED background-color */
+        /* Button Base Style */
         .button {
             display: inline-block;
             padding: 1.2rem 3rem;
-            background-color: var(--accent-color); /* Changed to dark red */
+            background-color: var(--accent-color);
             color: var(--light-color);
             font-size: 1.1rem;
             letter-spacing: 2px;
@@ -623,7 +631,7 @@
             border-radius: 4px;
             border: none;
             cursor: pointer;
-            transition: background-color 0.3s ease; /* Smooth color transition */
+            transition: background-color 0.3s ease;
         }
 
         /* Button Hover/Focus Effect */
@@ -649,20 +657,20 @@
             outline-offset: 2px;
          }
 
-        /* ADDED: Button modifier for Hero Badge Button */
+        /* Button modifier for Hero Badge Button */
         .button--hero-badge {
-            background-color: var(--secondary-color); /* Use secondary color like original badge */
-            padding: 0.5rem 1.5rem; /* Match original badge padding */
-            font-size: 0.9rem; /* Match original badge font size */
-            font-weight: 300; /* Match original badge font weight */
-            margin-top: 1.5rem; /* Match original badge margin */
+            background-color: var(--secondary-color);
+            padding: 0.5rem 1.5rem;
+            font-size: 0.9rem;
+            font-weight: 300;
+            margin-top: 1.5rem;
         }
         .button--hero-badge:hover,
         .button--hero-badge:focus {
-            background-color: #96785d; /* Slightly darker secondary color on hover */
+            background-color: #96785d;
         }
          .button--hero-badge:focus-visible {
-             outline-color: var(--primary-color); /* Different outline for contrast */
+             outline-color: var(--primary-color);
          }
 
 
@@ -771,12 +779,8 @@
             .features-container {
                 grid-template-columns: 1fr;
             }
-             /* Logo */
-            .logo {
-                top: 1.5rem;
-                left: 1.5rem;
-                font-size: 1rem;
-            }
+             /* Logo handled above */
+
              /* Second Video Section Images */
              .second-video-images {
                  gap: 1rem;
@@ -799,7 +803,7 @@
             .hero-content {
                 padding: 1.5rem;
             }
-            .button--hero-badge { /* Adjust badge button padding on mobile */
+            .button--hero-badge {
                  padding: 0.4rem 1rem;
                  font-size: 0.8rem;
             }
@@ -821,7 +825,7 @@
 
             /* CTA Button */
              .button {
-                 padding: 1rem 2rem; /* Adjust main button padding */
+                 padding: 1rem 2rem;
                  font-size: 1rem;
              }
 
@@ -852,7 +856,6 @@
         <div class="hero-content">
             <h1 class="hero-title">Copper Flute Triune</h1>
             <p class="hero-subtitle">The evolution of sound: three harmonically resonant chambers in perfect unity</p>
-            <!-- MODIFIED: Changed div to a button linking to CTA -->
             <a href="#cta-section" class="button button--hero-badge">LIMITED PRE-SALE OFFERING</a>
         </div>
         <div class="scroll-indicator">Discover</div>
@@ -876,7 +879,7 @@
         </div>
     </section>
 
-    <!-- Gallery Section - MOVED HERE -->
+    <!-- Gallery Section -->
     <section class="gallery">
         <div class="gallery-grid">
             <div class="gallery-item">
@@ -955,7 +958,6 @@
         <div class="container">
             <div class="specs-container">
                 <div class="specs-content">
-                    <!-- MODIFIED: Heading color handled by CSS -->
                     <h2 class="section-title">Sonic Character & Design</h2>
                     <p class="intro-text">The Copper Flute Triune represents the culmination of years exploring the interplay between melody and resonance. Its carefully calibrated chambers create a symphony of harmonics that enrich every note you play, transforming even the simplest melodies into immersive sonic experiences.</p>
                 </div>
@@ -1035,11 +1037,9 @@
     </section>
 
     <!-- Call to Action Section -->
-    <!-- ADDED: id for linking -->
     <section class="cta" id="cta-section">
         <div class="cta-container">
             <h2 class="cta-title">The Copper Flute Triune</h2>
-             <!-- ADDED: Image placeholder -->
              <img src="https://via.placeholder.com/500x250.png?text=Copper+Flute+Triune+Highlight"
                   alt="Highlight image of the Copper Flute Triune"
                   class="cta-image"
@@ -1048,7 +1048,6 @@
             <div class="cta-badge">FIRST 10 ORDERS ONLY</div>
             <p class="price"><span class="price-strikethrough">$595</span> $445</p>
             <p class="price-note">$150 pre-sale discount applied</p>
-            <!-- MODIFIED: Button color handled by CSS -->
             <a href="https://www.raummusic.com/cart" class="button">Reserve Now</a><br>
             <a href="https://www.raummusic.com/products" class="secondary-link">View All Instruments</a>
         </div>
