@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the Copper Flute Triune by RAUM Music. A revolutionary instrument with three harmonically resonant chambers for musicians, sound healers, and meditation practitioners. Pre-sale available.">
     <title>Copper Flute Triune | RAUM Music</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,60 +11,62 @@
     <style>
         :root {
             --primary-color: #1a1a1a;
-            --secondary-color: #a6886d;
+            --secondary-color: #a6886d; /* Brownish */
             --light-color: #f7f5f2;
             --dark-color: #0e0e0e;
+            /* ADDED: Accent color for button */
+            --accent-color: #a13d3d; /* Dark Red */
             --spacing: clamp(1rem, 5vw, 8rem);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         html {
             scroll-behavior: smooth;
             font-size: 16px;
         }
-        
+
         body {
             font-family: 'Work Sans', sans-serif;
             line-height: 1.6;
             color: #333333;
-            background-color: #f7f5f2;
+            background-color: var(--light-color);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-weight: 400;
         }
-        
+
         h1, h2, h3, h4 {
             font-family: 'Italiana', serif;
             font-weight: normal;
             line-height: 1.2;
             color: #222222;
         }
-        
+
         img {
             max-width: 100%;
             height: auto;
             display: block;
         }
-        
+
         a {
             text-decoration: none;
             color: inherit;
             transition: all 0.3s ease;
         }
-        
+
         .container {
             width: 100%;
             max-width: 1680px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
-        
+
         /* Subtle Animation Keyframes */
         @keyframes fadeUp {
             from {
@@ -75,12 +78,12 @@
                 transform: translateY(0);
             }
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+
         /* Logo */
         .logo {
             position: fixed;
@@ -94,13 +97,17 @@
             mix-blend-mode: difference;
             color: var(--light-color);
         }
-        
+        .logo img {
+             height: 40px;
+             width: auto;
+        }
+
         @media (max-width: 768px) {
             .logo {
                 position: absolute;
             }
         }
-        
+
         /* Hero Section */
         .hero {
             position: relative;
@@ -112,7 +119,7 @@
             justify-content: center;
             color: var(--light-color);
         }
-        
+
         .hero-bg {
             position: absolute;
             top: 0;
@@ -122,7 +129,7 @@
             background-color: rgba(14, 14, 14, 0.4);
             z-index: 0;
         }
-        
+
         .hero-image {
             position: absolute;
             top: 0;
@@ -134,7 +141,7 @@
             filter: none;
             z-index: -1;
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 2;
@@ -146,7 +153,7 @@
             padding: 2rem;
             border-radius: 4px;
         }
-        
+
         .hero-title {
             font-size: clamp(2.8rem, 8vw, 5rem);
             letter-spacing: 1px;
@@ -155,7 +162,7 @@
             color: #ffffff;
             font-family: 'Italiana', serif;
         }
-        
+
         .hero-subtitle {
             font-size: clamp(1.1rem, 2vw, 1.4rem);
             font-weight: 300;
@@ -165,7 +172,10 @@
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
             color: #ffffff;
         }
-        
+
+        /* Style for the badge that was here - now applied via button--hero-badge */
+        /* .pre-sale-badge { ... } */
+
         .scroll-indicator {
             position: absolute;
             bottom: 2rem;
@@ -179,7 +189,7 @@
             align-items: center;
             opacity: 0.8;
         }
-        
+
         .scroll-indicator::after {
             content: "";
             display: block;
@@ -189,7 +199,7 @@
             margin-top: 0.5rem;
             animation: fadeIn 1.5s infinite alternate;
         }
-        
+
         /* Introduction Section */
         .introduction {
             position: relative;
@@ -199,29 +209,29 @@
             align-items: center;
             background-color: var(--light-color);
         }
-        
+
         .intro-content {
             width: 50%;
             padding-right: var(--spacing);
         }
-        
+
         .intro-image {
             width: 50%;
             position: relative;
         }
-        
+
         .intro-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .section-title {
             font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 2rem;
             position: relative;
         }
-        
+
         .section-title::after {
             content: "";
             position: absolute;
@@ -231,7 +241,7 @@
             height: 1px;
             background-color: var(--secondary-color);
         }
-        
+
         .intro-text {
             font-size: clamp(1.1rem, 1.5vw, 1.2rem);
             font-weight: 400;
@@ -239,79 +249,56 @@
             max-width: 800px;
             line-height: 1.7;
         }
-        
-        /* Features Section */
-        .features {
-            background-color: #f0eeea;
-            padding: var(--spacing);
+
+        /* Responsive Video Wrapper */
+        .video-responsive {
             position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
             overflow: hidden;
+            max-width: 100%;
+            margin: 2rem 0;
         }
-        
-        .features-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem;
-            padding: var(--spacing) 0;
-        }
-        
-        .feature {
-            position: relative;
-            padding-left: 2rem;
-            background-color: rgba(255, 255, 255, 0.4);
-            padding: 1.5rem;
-            border-radius: 4px;
-        }
-        
-        .feature-number {
+
+        .video-responsive iframe {
             position: absolute;
-            top: -0.5rem;
+            top: 0;
             left: 0;
-            font-family: 'Italiana', serif;
-            font-size: 2.5rem;
-            opacity: 0.3;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
-        
-        .feature-title {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-        
-        .feature-description {
-            font-weight: 400;
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-        
-        /* Gallery Section */
+
+        /* Gallery Section - MOVED HERE */
         .gallery {
             padding: var(--spacing) 0;
             position: relative;
+            /* Removed margin-top: 2rem; as it's now placed differently */
         }
-        
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(2, 400px);
             gap: 2px;
         }
-        
+
         .gallery-item {
             position: relative;
             overflow: hidden;
         }
-        
+
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        
+
         .gallery-item:hover img {
             transform: scale(1.05);
         }
-        
+
         .gallery-caption {
             position: absolute;
             left: 2rem;
@@ -323,58 +310,192 @@
             transition: opacity 0.4s ease;
             text-transform: uppercase;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            z-index: 1;
         }
-        
+
         .gallery-item:hover .gallery-caption {
             opacity: 1;
         }
-        
+
+
+        /* Features Section */
+        .features {
+            background-color: #f0eeea;
+            padding: var(--spacing);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            padding: var(--spacing) 0;
+        }
+
+        .feature {
+            position: relative;
+            padding-left: 2rem;
+            background-color: rgba(255, 255, 255, 0.4);
+            padding: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .feature-number {
+            position: absolute;
+            top: -0.5rem;
+            left: 0;
+            font-family: 'Italiana', serif;
+            font-size: 2.5rem;
+            opacity: 0.3;
+            line-height: 1;
+             z-index: 0;
+        }
+
+        .feature-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+             position: relative;
+             z-index: 1;
+        }
+
+        .feature-description {
+            font-weight: 400;
+            line-height: 1.7;
+            font-size: 1.1rem;
+             position: relative;
+             z-index: 1;
+        }
+
+
+        /* Second Video Section */
+        .second-video-section { /* Added class for clarity */
+            background-color: #f0ebe5;
+            padding: calc(var(--spacing) * 1.5) var(--spacing);
+        }
+        .second-video-images {
+             display: flex;
+             gap: 2rem;
+             flex-wrap: wrap;
+             justify-content: center;
+             margin-bottom: 2rem;
+        }
+        .showcase-image {
+            max-width: 100%;
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+        }
+
+
         /* Testimonial Section */
         .testimonial {
             padding: calc(var(--spacing) * 2) var(--spacing);
             text-align: center;
-            background-color: #f0ebe5;
+            background-color: #f0ebe5; /* Re-evaluate background if adjacent to same color */
         }
-        
+
         .testimonial-content {
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .testimonial-text {
             font-size: clamp(1.5rem, 3vw, 2.5rem);
             font-family: 'Italiana', serif;
             line-height: 1.5;
             margin-bottom: 2rem;
         }
-        
+
         .testimonial-author {
             font-size: 1.2rem;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-        
+
+        /* Specs Section */
+        .specs {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: calc(var(--spacing) * 2) var(--spacing);
+            position: relative;
+        }
+
+        .specs-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+
+        .specs-content {
+            width: 40%;
+        }
+        /* MODIFIED: Explicit white color for h2, removed opacity override */
+        .specs-content h2 {
+             color: #FFFFFF; /* Pure white as requested */
+             opacity: 1; /* Ensure full opacity */
+        }
+         .specs-content p { /* Keep paragraph style */
+             color: var(--light-color);
+             opacity: 0.9;
+         }
+         .specs-content .section-title::after {
+             background-color: var(--secondary-color);
+             opacity: 0.7;
+         }
+
+
+        .specs-table {
+            width: 50%;
+        }
+
+        .specs-row {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 0;
+        }
+
+        .specs-row:last-child {
+            border-bottom: none;
+        }
+
+        .specs-label {
+            width: 40%;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+             opacity: 0.7;
+        }
+
+        .specs-value {
+            width: 60%;
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
         /* Timeline Section */
         .timeline {
             padding: calc(var(--spacing) * 2) var(--spacing);
             background-color: var(--light-color);
         }
-        
+
         .timeline-container {
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .timeline-item {
             display: flex;
             margin-bottom: 3rem;
             position: relative;
         }
-        
+
         .timeline-item:last-child {
             margin-bottom: 0;
         }
-        
+
         .timeline-item::before {
             content: "";
             position: absolute;
@@ -383,12 +504,13 @@
             bottom: -50px;
             width: 1px;
             background-color: rgba(0, 0, 0, 0.1);
+            z-index: 0;
         }
-        
+
         .timeline-item:last-child::before {
             display: none;
         }
-        
+
         .timeline-icon {
             width: 64px;
             height: 64px;
@@ -404,11 +526,11 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .timeline-content {
             padding-top: 0.5rem;
         }
-        
+
         .timeline-date {
             font-size: 1rem;
             text-transform: uppercase;
@@ -416,65 +538,18 @@
             color: var(--secondary-color);
             margin-bottom: 0.5rem;
         }
-        
+
         .timeline-title {
             font-size: 1.6rem;
             margin-bottom: 1rem;
         }
-        
+
         .timeline-text {
             font-weight: 400;
             font-size: 1.1rem;
             line-height: 1.8;
         }
-        
-        /* Specs Section */
-        .specs {
-            background-color: var(--primary-color);
-            color: var(--light-color);
-            padding: calc(var(--spacing) * 2) var(--spacing);
-            position: relative;
-        }
-        
-        .specs-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 4rem;
-        }
-        
-        .specs-content {
-            width: 40%;
-        }
-        
-        .specs-table {
-            width: 50%;
-        }
-        
-        .specs-row {
-            display: flex;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.5rem 0;
-        }
-        
-        .specs-row:last-child {
-            border-bottom: none;
-        }
-        
-        .specs-label {
-            width: 40%;
-            font-weight: 500;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-        
-        .specs-value {
-            width: 60%;
-            font-weight: 400;
-            font-size: 1.1rem;
-        }
-        
+
         /* Call to Action */
         .cta {
             padding: calc(var(--spacing) * 2) var(--spacing);
@@ -482,28 +557,62 @@
             background-color: var(--light-color);
             position: relative;
         }
-        
+
         .cta-container {
             max-width: 600px;
             margin: 0 auto;
         }
-        
+
+        /* ADDED: Style for placeholder image in CTA */
+        .cta-image {
+            margin-bottom: 2rem;
+            display: block; /* Needed for auto margins */
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 100%; /* Prevent overflow */
+            border-radius: 4px; /* Optional: match button radius */
+        }
+
         .cta-title {
             font-size: clamp(2rem, 5vw, 3.5rem);
-            margin-bottom: 2rem;
+            margin-bottom: 1rem; /* Adjusted margin */
         }
-        
+
         .price {
             font-size: 2.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             color: var(--secondary-color);
             font-family: 'Italiana', serif;
         }
-        
+        .price-strikethrough {
+             text-decoration: line-through;
+             opacity: 0.5;
+             font-size: 1.8rem;
+             margin-right: 1rem;
+             color: #666;
+        }
+        .price-note {
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+        }
+         .cta-badge {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            padding: 0.5rem 1.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            border-radius: 4px; /* Match button radius */
+        }
+
+
+        /* Button Base Style - MODIFIED background-color */
         .button {
             display: inline-block;
             padding: 1.2rem 3rem;
-            background-color: var(--primary-color);
+            background-color: var(--accent-color); /* Changed to dark red */
             color: var(--light-color);
             font-size: 1.1rem;
             letter-spacing: 2px;
@@ -512,8 +621,12 @@
             position: relative;
             overflow: hidden;
             border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Smooth color transition */
         }
-        
+
+        /* Button Hover/Focus Effect */
         .button::after {
             content: "";
             position: absolute;
@@ -525,11 +638,34 @@
             transition: transform 0.5s ease;
             transform: skewX(-25deg);
         }
-        
-        .button:hover::after {
+
+        .button:hover::after,
+        .button:focus::after {
             transform: translateX(200%) skewX(-25deg);
         }
-        
+
+         .button:focus-visible {
+            outline: 2px solid var(--secondary-color);
+            outline-offset: 2px;
+         }
+
+        /* ADDED: Button modifier for Hero Badge Button */
+        .button--hero-badge {
+            background-color: var(--secondary-color); /* Use secondary color like original badge */
+            padding: 0.5rem 1.5rem; /* Match original badge padding */
+            font-size: 0.9rem; /* Match original badge font size */
+            font-weight: 300; /* Match original badge font weight */
+            margin-top: 1.5rem; /* Match original badge margin */
+        }
+        .button--hero-badge:hover,
+        .button--hero-badge:focus {
+            background-color: #96785d; /* Slightly darker secondary color on hover */
+        }
+         .button--hero-badge:focus-visible {
+             outline-color: var(--primary-color); /* Different outline for contrast */
+         }
+
+
         .secondary-link {
             font-size: 0.9rem;
             letter-spacing: 1px;
@@ -538,7 +674,12 @@
             border-bottom: 1px solid currentColor;
             padding-bottom: 2px;
         }
-        
+         .secondary-link:hover,
+         .secondary-link:focus {
+             opacity: 0.8;
+             outline: none;
+         }
+
         /* Footer */
         footer {
             padding: 4rem var(--spacing);
@@ -546,145 +687,217 @@
             color: var(--light-color);
             text-align: center;
         }
-        
+
         .footer-logo {
             font-family: 'Italiana', serif;
             font-size: 1.5rem;
             letter-spacing: 3px;
             margin-bottom: 2rem;
         }
-        
+
+        .footer-nav {
+            margin-bottom: 2rem;
+        }
         .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
-        
-        .footer-link {
+
+        .footer-link a {
             font-size: 0.8rem;
             letter-spacing: 1px;
             text-transform: uppercase;
             opacity: 0.7;
             transition: opacity 0.3s ease;
+            color: var(--light-color);
+             display: inline-block;
         }
-        
-        .footer-link:hover {
+
+        .footer-link a:hover,
+        .footer-link a:focus {
             opacity: 1;
+            outline: none;
         }
-        
+
         .copyright {
             font-size: 0.8rem;
             opacity: 0.5;
         }
-        
+
+        .img-cover {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
         /* Mobile Optimizations */
         @media (max-width: 992px) {
             .introduction {
                 flex-direction: column;
             }
-            
+
             .intro-content, .intro-image {
                 width: 100%;
                 padding-right: 0;
             }
-            
+
             .intro-content {
                 margin-bottom: 3rem;
             }
-            
+
             .specs-container {
                 flex-direction: column;
                 gap: 3rem;
             }
-            
+
             .specs-content, .specs-table {
                 width: 100%;
             }
         }
-        
+
         @media (max-width: 768px) {
+             /* Gallery Grid */
             .gallery-grid {
                 grid-template-columns: 1fr;
                 grid-template-rows: repeat(4, 300px);
             }
-            
+             /* Features */
             .features-container {
                 grid-template-columns: 1fr;
             }
-            
+             /* Logo */
             .logo {
                 top: 1.5rem;
                 left: 1.5rem;
                 font-size: 1rem;
             }
+             /* Second Video Section Images */
+             .second-video-images {
+                 gap: 1rem;
+             }
+             .showcase-image {
+                 width: calc(50% - 0.5rem);
+                 height: auto;
+                 aspect-ratio: 1 / 1;
+             }
         }
-        
+
         @media (max-width: 480px) {
             :root {
                 --spacing: 1.5rem;
             }
-            
+             /* Hero */
             .hero-title {
                 font-size: 2.5rem;
             }
-            
+            .hero-content {
+                padding: 1.5rem;
+            }
+            .button--hero-badge { /* Adjust badge button padding on mobile */
+                 padding: 0.4rem 1rem;
+                 font-size: 0.8rem;
+            }
+
+             /* Specs */
             .specs-row {
                 flex-direction: column;
+                gap: 0.5rem;
+                 padding: 1rem 0;
             }
-            
+
             .specs-label, .specs-value {
                 width: 100%;
             }
-            
+
             .specs-label {
-                margin-bottom: 0.5rem;
+                margin-bottom: 0;
             }
-            
+
+            /* CTA Button */
+             .button {
+                 padding: 1rem 2rem; /* Adjust main button padding */
+                 font-size: 1rem;
+             }
+
+             /* Footer */
             .footer-links {
                 flex-direction: column;
                 gap: 1rem;
             }
+             /* Second Video Section Images */
+             .showcase-image {
+                 width: 100%;
+                 height: auto;
+                 aspect-ratio: 1 / 1;
+             }
         }
     </style>
 </head>
 <body>
     <!-- Logo -->
     <div class="logo">
-        <img src="/img/white-logo.png" alt="RAUM Music" style="height: 40px; width: auto;">
+        <img src="/img/white-logo.png" alt="RAUM Music">
     </div>
-    
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-bg"></div>
-        <img src="/img/11.jpg" alt="Copper Flute Triune - Elegant copper and blue patina design" class="hero-image" style="width:100%; height:100%; object-fit:cover;">
+        <img src="/img/11.jpg" alt="Copper Flute Triune - Elegant copper and blue patina design" class="hero-image" loading="eager">
         <div class="hero-content">
             <h1 class="hero-title">Copper Flute Triune</h1>
             <p class="hero-subtitle">The evolution of sound: three harmonically resonant chambers in perfect unity</p>
-            <div style="display: inline-block; background-color: var(--secondary-color); color: var(--light-color); padding: 0.5rem 1.5rem; margin-top: 1.5rem; letter-spacing: 1px; font-size: 0.9rem; font-weight: 300;">LIMITED PRE-SALE OFFERING</div>
+            <!-- MODIFIED: Changed div to a button linking to CTA -->
+            <a href="#cta-section" class="button button--hero-badge">LIMITED PRE-SALE OFFERING</a>
         </div>
         <div class="scroll-indicator">Discover</div>
     </section>
-    
+
     <!-- Introduction Section -->
     <section class="introduction">
         <div class="intro-content">
             <h2 class="section-title">Beyond the Traditional Drone</h2>
             <p class="intro-text">For years, musicians have requested a "drone version" of the Copper Flute—but simply placing two flute bodies side by side was never going to be enough. The Copper Flute Triune represents a complete reimagining of what a drone instrument can be.</p>
-            
-            <!-- Responsive Video Container -->
-            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 2rem 0;">
-                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://iframe.mediadelivery.net/embed/[YOUR_LIBRARY_ID]/[YOUR_VIDEO_ID]?autoplay=false" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+
+            <div class="video-responsive">
+                <iframe title="Copper Flute Triune Introduction Video" src="https://iframe.mediadelivery.net/embed/[YOUR_LIBRARY_ID]/[YOUR_VIDEO_ID_1]?autoplay=false" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
             </div>
-            
+
             <p class="intro-text">This isn't just another product; it's a unique artistic statement. With three perfectly calibrated resonance chambers working in harmonic unity, the Triune creates a rich tapestry of overtones that transforms solo playing into a full, immersive sonic experience.</p>
             <p class="intro-text">Each note you play is supported by three meticulously tuned drone chambers, creating complex harmonic interactions that were previously impossible with traditional drone instruments. The result is an instrument that speaks with multiple voices while remaining intuitive to play.</p>
         </div>
         <div class="intro-image">
-            <img src="/img/12.jpg" alt="Copper Flute Triune Detail - Three openings design" style="width:100%; height:auto; object-fit:cover;">
+            <img src="/img/12.jpg" alt="Copper Flute Triune Detail - Three openings design" class="img-cover" loading="lazy">
         </div>
     </section>
-    
+
+    <!-- Gallery Section - MOVED HERE -->
+    <section class="gallery">
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="/img/1.jpg" alt="Copper Flute Triune - Precision Copper Engineering" class="img-cover" loading="lazy">
+                <div class="gallery-caption">Precision Copper Engineering</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/img/4.jpg" alt="Copper Flute Triune - Triple Chamber Design" class="img-cover" loading="lazy">
+                <div class="gallery-caption">Triple Chamber Design</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/img/7.jpg" alt="Copper Flute Triune - Triple Drone Architecture" class="img-cover" loading="lazy">
+                <div class="gallery-caption">Triple Drone Architecture</div>
+            </div>
+            <div class="gallery-item">
+                <img src="/img/10.jpg" alt="Copper Flute Triune - Performer's View" class="img-cover" loading="lazy">
+                <div class="gallery-caption">Performer's View</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section class="features">
         <div class="container">
@@ -713,45 +926,22 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Second Video Section -->
-    <section style="background-color: #f0ebe5; padding: calc(var(--spacing) * 1.5) var(--spacing);">
+    <section class="second-video-section">
         <div class="container">
             <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Experience the Triune</h2>
-            <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2rem;">
-                <img src="/img/3.jpg" alt="Copper Flute Triune - Detail view" style="max-width: 100%; width: 300px; height: 300px; object-fit: cover;">
-                <img src="/img/5.jpg" alt="Copper Flute Triune - Full view" style="max-width: 100%; width: 300px; height: 300px; object-fit: cover;">
-                <img src="/img/6.jpg" alt="Copper Flute Triune - Side detail" style="max-width: 100%; width: 300px; height: 300px; object-fit: cover;">
+            <div class="second-video-images">
+                <img src="/img/3.jpg" alt="Copper Flute Triune - Detail view" class="showcase-image" loading="lazy">
+                <img src="/img/5.jpg" alt="Copper Flute Triune - Full view" class="showcase-image" loading="lazy">
+                <img src="/img/6.jpg" alt="Copper Flute Triune - Side detail" class="showcase-image" loading="lazy">
             </div>
-            <!-- Responsive Video Container -->
-            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 900px; margin: 0 auto;">
-                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://iframe.mediadelivery.net/embed/[YOUR_LIBRARY_ID]/[YOUR_VIDEO_ID]?autoplay=false" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Gallery Section MOVED -->
-    <section class="gallery" style="margin-top: 2rem;">
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="/img/1.jpg" alt="Copper Flute Triune - Precision Copper Engineering" style="width:100%; height:100%; object-fit:cover;">
-                <div class="gallery-caption">Precision Copper Engineering</div>
-            </div>
-            <div class="gallery-item">
-                <img src="/img/4.jpg" alt="Copper Flute Triune - Triple Chamber Design" style="width:100%; height:100%; object-fit:cover;">
-                <div class="gallery-caption">Triple Chamber Design</div>
-            </div>
-            <div class="gallery-item">
-                <img src="/img/7.jpg" alt="Copper Flute Triune - Triple Drone Architecture" style="width:100%; height:100%; object-fit:cover;">
-                <div class="gallery-caption">Triple Drone Architecture</div>
-            </div>
-            <div class="gallery-item">
-                <img src="/img/10.jpg" alt="Copper Flute Triune - Performer's View" style="width:100%; height:100%; object-fit:cover;">
-                <div class="gallery-caption">Performer's View</div>
+            <div class="video-responsive" style="max-width: 900px; margin-left: auto; margin-right: auto;">
+                <iframe title="Copper Flute Triune Experience Video" src="https://iframe.mediadelivery.net/embed/[YOUR_LIBRARY_ID]/[YOUR_VIDEO_ID_2]?autoplay=false" loading="lazy" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
             </div>
         </div>
     </section>
-    
+
     <!-- Testimonial Section -->
     <section class="testimonial">
         <div class="testimonial-content">
@@ -759,12 +949,13 @@
             <p class="testimonial-author">Eliza Chen, Composer</p>
         </div>
     </section>
-    
+
     <!-- Specs Section -->
     <section class="specs">
         <div class="container">
             <div class="specs-container">
                 <div class="specs-content">
+                    <!-- MODIFIED: Heading color handled by CSS -->
                     <h2 class="section-title">Sonic Character & Design</h2>
                     <p class="intro-text">The Copper Flute Triune represents the culmination of years exploring the interplay between melody and resonance. Its carefully calibrated chambers create a symphony of harmonics that enrich every note you play, transforming even the simplest melodies into immersive sonic experiences.</p>
                 </div>
@@ -801,13 +992,13 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Timeline Section -->
     <section class="timeline">
         <div class="container">
             <h2 class="section-title">Pre-Sale Journey</h2>
             <div class="timeline-container">
-                <div class="timeline-item">
+                 <div class="timeline-item">
                     <div class="timeline-icon">1</div>
                     <div class="timeline-content">
                         <p class="timeline-date">Now</p>
@@ -842,30 +1033,39 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Call to Action Section -->
-    <section class="cta">
+    <!-- ADDED: id for linking -->
+    <section class="cta" id="cta-section">
         <div class="cta-container">
             <h2 class="cta-title">The Copper Flute Triune</h2>
+             <!-- ADDED: Image placeholder -->
+             <img src="https://via.placeholder.com/500x250.png?text=Copper+Flute+Triune+Highlight"
+                  alt="Highlight image of the Copper Flute Triune"
+                  class="cta-image"
+                  loading="lazy">
             <p class="intro-text" style="margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">After years of experimentation and development, we're offering an exclusive pre-sale opportunity for this groundbreaking instrument. The first 10 musicians will receive a significant discount on this exceptional creation.</p>
-            <div style="display: inline-block; background-color: var(--secondary-color); color: var(--light-color); padding: 0.5rem 1.5rem; margin-bottom: 2rem; letter-spacing: 1px; font-size: 0.9rem;">FIRST 10 ORDERS ONLY</div>
-            <p class="price"><span style="text-decoration: line-through; opacity: 0.5; font-size: 1.8rem; margin-right: 1rem;">$595</span> $445</p>
-            <p style="font-size: 0.9rem; margin-bottom: 2rem; opacity: 0.7;">$150 pre-sale discount applied</p>
+            <div class="cta-badge">FIRST 10 ORDERS ONLY</div>
+            <p class="price"><span class="price-strikethrough">$595</span> $445</p>
+            <p class="price-note">$150 pre-sale discount applied</p>
+            <!-- MODIFIED: Button color handled by CSS -->
             <a href="https://www.raummusic.com/cart" class="button">Reserve Now</a><br>
             <a href="https://www.raummusic.com/products" class="secondary-link">View All Instruments</a>
         </div>
     </section>
-    
+
     <!-- Footer -->
     <footer>
         <div class="footer-logo">RAUM</div>
-        <div class="footer-links">
-            <a href="https://www.raummusic.com/about" class="footer-link">About</a>
-            <a href="https://www.raummusic.com/contact" class="footer-link">Contact</a>
-            <a href="https://www.raummusic.com/shipping" class="footer-link">Shipping</a>
-            <a href="https://www.raummusic.com/care" class="footer-link">Instrument Care</a>
-        </div>
-        <p class="copyright">&copy; 2025 RAUM Music. All rights reserved.</p>
+        <nav class="footer-nav" aria-label="Footer Navigation">
+            <ul class="footer-links">
+                <li class="footer-link"><a href="https://www.raummusic.com/about">About</a></li>
+                <li class="footer-link"><a href="https://www.raummusic.com/contact">Contact</a></li>
+                <li class="footer-link"><a href="https://www.raummusic.com/shipping">Shipping</a></li>
+                <li class="footer-link"><a href="https://www.raummusic.com/care">Instrument Care</a></li>
+            </ul>
+        </nav>
+        <p class="copyright">© 2024 RAUM Music. All rights reserved.</p>
     </footer>
 </body>
 </html>
