@@ -3,18 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Define Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' https://*.googletagmanager.com 'unsafe-inline' 'unsafe-eval' https://*.google-analytics.com https://*.analytics.google.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        font-src 'self' https://fonts.gstatic.com;
+        img-src 'self' data: https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;
+        connect-src 'self' https://*.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;
+        frame-src 'self' https://iframe.mediadelivery.net https://*.googletagmanager.com;
+    ">
+
     <meta name="description" content="Discover the Copper Flute Triune by RAUM Music. A revolutionary instrument with three harmonically resonant chambers for musicians, sound healers, and meditation practitioners. Pre-sale available.">
     <title>Copper Flute Triune | RAUM Music</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Work+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon"/>
+
    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M7GSMTS5');</script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M7GSMTS5');</script>
 <!-- End Google Tag Manager -->
 
     <style>
@@ -855,10 +868,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7GSMTS5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) - Moved to top of body -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7GSMTS5"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <!-- Logo -->
     <div class="logo">
         <img src="/img/white-logo.png" alt="RAUM Music">
@@ -870,7 +884,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <img src="/img/11.jpg" alt="Copper Flute Triune - Elegant copper and blue patina design" class="hero-image" loading="eager">
         <div class="hero-content">
             <h1 class="hero-title">Copper Flute Triune</h1>
-            <!-- UPDATED: Hero Subtitle -->
             <p class="hero-subtitle">An evolution in harmony</p>
             <a href="#cta-section" class="button button--hero-badge">LIMITED PRE-SALE OFFERING</a>
         </div>
@@ -881,7 +894,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <section class="introduction">
         <div class="intro-content">
             <h2 class="section-title">Beyond the Traditional Drone</h2>
-            <!-- UPDATED: Intro Text paragraphs -->
             <p class="intro-text">Since releasing the first Copper Flute, the number one request I’ve received is for a “drone” version. Creating unique drones is what first pulled me into this craft, so if I was going to do a drone, I wanted it to be more than just placing two bodies together.</p>
             <p class="intro-text">I wanted to rethink the existing standards around creating a “drone flute”. My goal was to capture an intentional aesthetic while integrating the beauty of the Copper Flute.</p>
             <p class="intro-text">After many tests, prototypes, long nights and early mornings… I am proud to bring you the end result of this vision.</p>
@@ -911,7 +923,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="gallery-grid">
             <div class="gallery-item">
                 <img src="/img/1.jpg" alt="Copper Flute Triune - Precision Copper Engineering" class="img-cover" loading="lazy">
-                <!-- UPDATED: Caption -->
                 <div class="gallery-caption">Precision Engineering</div>
             </div>
             <div class="gallery-item">
@@ -920,12 +931,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
             <div class="gallery-item">
                 <img src="/img/7.jpg" alt="Copper Flute Triune - Triple Drone Architecture" class="img-cover" loading="lazy">
-                 <!-- UPDATED: Caption -->
                 <div class="gallery-caption">Tiered Chamber Mouthpiece</div>
             </div>
             <div class="gallery-item">
                 <img src="/img/10.jpg" alt="Copper Flute Triune - Performer's View" class="img-cover" loading="lazy">
-                 <!-- UPDATED: Caption -->
                 <div class="gallery-caption">TruResonant® Acoustic Technology Headjoint</div>
             </div>
         </div>
@@ -939,19 +948,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="feature">
                     <div class="feature-number">01</div>
                     <h3 class="feature-title">Flute Players & Musicians</h3>
-                    <!-- UPDATED: Feature Description (replaced entirely) -->
                     <p class="feature-description">For flutists and musicians seeking to expand their sonic palette. he Triune offers a natural extension to your musical vocabulary, allowing you to create rich, multi-layered compositions without additional instruments or effects. Its innovative design respects traditional techniques while opening new expressive possibilities.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-number">02</div>
                     <h3 class="feature-title">Sound Healers & Therapists</h3>
-                     <!-- UPDATED: Feature Description (modified phrase) -->
                     <p class="feature-description">The Triune's three harmonic chambers create resonant frequencies that are particularly well-received in sound healing environments. The rich, sustained drone tones produce a more immersive sonic environment than single-chamber instruments, allowing practitioners to create deeper meditative states and more profound harmonic experiences for clients.</p>
                 </div>
                 <div class="feature">
                     <div class="feature-number">03</div>
                     <h3 class="feature-title">Yoga & Meditation Instructors</h3>
-                     <!-- UPDATED: Feature Description (modified first sentence) -->
                     <p class="feature-description">Transform your sessions with beautiful, evolving tones. The Triune's ability to create continuous harmonic fields makes it perfect for guiding breathwork, enhancing transitions between poses, or establishing a sacred atmosphere for meditation practices.</p>
                 </div>
                 <div class="feature">
