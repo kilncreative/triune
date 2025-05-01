@@ -213,7 +213,7 @@
 
         .intro-content {
             width: 50%;
-             padding-right: 0; /* Reset padding if needed */
+             padding-right: 0;
         }
 
         .intro-image {
@@ -256,16 +256,16 @@
         }
 
 
-        /* Responsive Video Wrapper - CHECKED */
+        /* Responsive Video Wrapper */
         .video-responsive {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
-            overflow: hidden;
+            overflow: hidden; /* Keep hidden to clip iframe */
             max-width: 100%;
-            width: 100%; /* Ensure it tries to take full width */
-            margin: 2rem 0; /* Vertical margins */
-            background-color: #000; /* Background */
+            width: 100%;
+            margin: 2rem 0;
+            background-color: #111; /* Dark background */
         }
 
         .video-responsive iframe {
@@ -730,7 +730,7 @@
         @media (max-width: 992px) {
             .introduction {
                 flex-direction: column;
-                align-items: stretch; /* Changed from flex-start */
+                align-items: stretch;
             }
 
             .intro-content, .intro-image {
@@ -745,8 +745,7 @@
              }
              /* Mobile rule for video container - Ensure width */
              .intro-content .video-responsive {
-                 /* Removed margin-left/right: auto */
-                 width: 100%; /* Make sure it takes container width */
+                 width: 100%;
                  max-width: 100%;
                  margin-top: 2rem;
                  margin-bottom: 2rem;
@@ -786,8 +785,7 @@
              }
               /* Ensure second video takes appropriate width on smaller screens */
              .second-video-section .video-responsive {
-                 /* max-width: 100%; Is likely fine, but could be reduced if needed */
-                 margin-left: auto; /* Keep centering for this one */
+                 margin-left: auto;
                  margin-right: auto;
              }
         }
@@ -842,7 +840,7 @@
              }
              /* Video on smallest screens */
              .video-responsive {
-                  margin: 1.5rem 0; /* Adjust margin */
+                  margin: 1.5rem 0;
              }
         }
     </style>
@@ -877,12 +875,12 @@
             <p class="intro-text">The Copper Flute Triune was created as a work of functional art, combining beautiful design with a harmonious voice. The end result is an instrument like no other.</p>
             <p class="intro-text">Today, I am inviting you to be one of the first people in the world to hold a Copper Flute Triune of your own!</p>
 
-            <!-- Video 1: Back to basic embed, using official src -->
+            <!-- Video 1: Simplified SRC -->
              <div class="video-responsive">
                 <iframe
-                    id="video1" <!-- Added ID for potential future JS targeting -->
+                    id="video1"
                     title="Copper Flute Triune Introduction Video"
-                    src="https://iframe.mediadelivery.net/embed/263643/aa3eda7d-e0cd-429b-bf9f-a87c0602ec86?autoplay=false&loop=true&muted=true&preload=false&responsive=true"
+                    src="https://iframe.mediadelivery.net/embed/263643/aa3eda7d-e0cd-429b-bf9f-a87c0602ec86?autoplay=false"
                     loading="lazy"
                     style="border:0;position:absolute;top:0;height:100%;width:100%;"
                     allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
@@ -961,12 +959,12 @@
                 <img src="/img/5.jpg" alt="Copper Flute Triune - Full view" class="showcase-image" loading="lazy">
                 <img src="/img/6.jpg" alt="Copper Flute Triune - Side detail" class="showcase-image" loading="lazy">
             </div>
-             <!-- Video 2: Back to basic embed, using official src -->
+             <!-- Video 2: Simplified SRC -->
             <div class="video-responsive" style="max-width: 900px; margin-left: auto; margin-right: auto;">
                 <iframe
-                    id="video2" <!-- Added ID for potential future JS targeting -->
+                    id="video2"
                     title="Copper Flute Triune Experience Video"
-                    src="https://iframe.mediadelivery.net/embed/263643/aa3eda7d-e0cd-429b-bf9f-a87c0602ec86?autoplay=false&loop=true&muted=true&preload=false&responsive=true"
+                    src="https://iframe.mediadelivery.net/embed/263643/aa3eda7d-e0cd-429b-bf9f-a87c0602ec86?autoplay=false"
                     loading="lazy"
                     style="border:0;position:absolute;top:0;height:100%;width:100%;"
                     allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
@@ -1079,8 +1077,6 @@
         </nav>
         <p class="copyright">© 2025 RAUM Music. All rights reserved.</p>
     </footer>
-
-     <!-- Removed the thumbnail overlay script -->
 
 </body>
 </html>
